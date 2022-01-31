@@ -76,7 +76,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"names\": [{\r\n    \"firstname\":\"vaibhav\",\r\n    \"lastname\": \"joshi\"\r\n}]\r\n\r\n}",
+					"raw": "{\"names\": [{\"firstname\":\"vaibhav\",\"lastname\": \"joshi\"},\r\n{\"firstname\":\"testname1234567891011111111\", \"lastname\": \"joshi\"}\r\n],\r\n\"recordType\":\"PERSON\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -84,13 +84,27 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/test1?testparam1=111&testparam2=222&has_alert=true Copy",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"test1"
+					],
+					"query": [
+						{
+							"key": "testparam1",
+							"value": "111"
+						},
+						{
+							"key": "testparam2",
+							"value": "222"
+						},
+						{
+							"key": "has_alert",
+							"value": "true Copy"
+						}
 					]
 				}
 			},
@@ -103,7 +117,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"names\": [{\r\n    \"firstname\":\"vaibhav\",\r\n    \"lastname\": \"joshi\"\r\n}]\r\n\r\n}",
+					"raw": "{\r\n    \"itemID\": \"3334\",\r\n    \"name\" : \"cccd\",\r\n    \"description\" : \"it's great store\",\r\n    \"price\" : 21.00,\r\n    \"orderID\" : \"123\"\r\n}\r\n\r\n\r\n\r\n[{\r\n    \"firstname\":\"vaibhav\",\r\n    \"lastname\": \"joshi\"\r\n}]\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,13 +125,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/items",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"items"
 					]
 				}
 			},
@@ -130,7 +144,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"names\": [{\r\n    \"firstname\":\"vaibhav\",\r\n    \"lastname\": \"joshi\"\r\n}]\r\n\r\n}",
+					"raw": "{\"orderID\" : \"123\",\r\n\"clientName\" : \"client one\",\r\n\"items\": [\r\n{\r\n    \"itemID\": \"3333\",\r\n    \"name\" : \"ccc\",\r\n    \"description\" : \"it's great store\",\r\n    \"price\" : 20.00\r\n}     \r\n ]\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -138,13 +152,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/orders",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"orders"
 					]
 				}
 			},
@@ -157,7 +171,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"names\": [{\r\n    \"firstname\":\"vaibhav\",\r\n    \"lastname\": \"joshi\"\r\n}]\r\n\r\n}",
+					"raw": "{\r\n    \"itemID\": \"3333\",\r\n    \"name\" : \"ccc\",\r\n    \"description\" : \"it's great store\",\r\n    \"price\" : 20.00\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -165,13 +179,15 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/orders/123/item",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"orders",
+						"123",
+						"item"
 					]
 				}
 			},
@@ -179,8 +195,11 @@
 		},
 		{
 			"name": "localhost:8080/getItem",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -192,13 +211,24 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/items?price=20",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"items"
+					],
+					"query": [
+						{
+							"key": "itemID",
+							"value": "3333",
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "20"
+						}
 					]
 				}
 			},
@@ -206,8 +236,11 @@
 		},
 		{
 			"name": "localhost:8080/getOrder",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -219,13 +252,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/orders/123",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"orders",
+						"123"
 					]
 				}
 			},
@@ -233,8 +267,11 @@
 		},
 		{
 			"name": "localhost:8080/getItemByPrice",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -246,13 +283,19 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/items?price=50",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"items"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "50"
+						}
 					]
 				}
 			},
@@ -260,8 +303,11 @@
 		},
 		{
 			"name": "localhost:8080/getAlItems",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -273,13 +319,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/users",
+					"raw": "localhost:8080/items",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
+						"items"
 					]
 				}
 			},
